@@ -40,5 +40,5 @@ class Encoder(JSONEncoder):
         return o.__dict__
 
 if __name__ == "__main__":
-    to = Tournament("/en/tournaments/tokyo/329/overview")
+    to = Tournament("/en/tournaments/paris/352/overview")
     print(to)

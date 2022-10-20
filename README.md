@@ -9,7 +9,7 @@
     "url": "https://www.atptour.com/en/tournaments/paris/352/overview",
     "name": "Rolex Paris Masters",
     "loc": "Paris, France",
-    "time": "October 31 - November 06 "
+    "time": "October 31 - November 06"
 }
 ```
 
