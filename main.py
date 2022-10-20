@@ -1,6 +1,11 @@
 #import datetime
 from tourn import *
 
+##KEEGAN dont forget ----- 
+##when crossing over to another month there will be 
+##more items after a tournment.time.split(' ')
+##so watch out!!
+
 #list of tournaments that are currently on
 def get_curr_tourns(tourns: list[Tournament]) -> list[Tournament]:
 	#TODO
