@@ -11,10 +11,10 @@ class Tournament:
 
         self.build(page)
 
-    def __str__(self):
+    def __str__(self) -> None:
         return jsonify(self)
 
-    def build(self, page: str):
+    def build(self, page: str) -> None:
         basic_info = page.find("div", {"class": "inner-wrap"})
         self.name = basic_info.find("div", {"class": "last-name"}).text
         basic_info = basic_info.findAll("div", {"class": "hero-date-range"})
