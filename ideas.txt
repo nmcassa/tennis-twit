@@ -1,0 +1,25 @@
+Tournament name
+Dates
+Surface
+Prize pool
+Top Seed
+
+----------------
+
+Top Players for $tournamnet
+1. $seeds[0]
+....
+
+----------------
+
+for day in tourn
+	Day $day
+	upsets check:
+	[UR] $players[upsete] def. [r]
+
+-----------------
+
+todays matches
+	
+player1 VVVXX-> player2
+player1 <-VVVVV player2
