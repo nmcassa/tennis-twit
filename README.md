@@ -5,16 +5,29 @@
  Given the url of a tournament page from atpworldtour.com will create this object:
 
 ```python
- {
+{
     "url": "https://www.atptour.com/en/tournaments/paris/352/overview",
     "name": "Rolex Paris Masters",
     "loc": "Paris, France",
-    "time": "October 31 - November 06"
+    "time": "October 31 - November 06",
+    "surface": "Hard",
+    "prize": "5,415,410",
+    "commit": "6,008,725",
+    "top_players": [
+        "Carlos Alcaraz",
+        "Rafael Nadal",
+        "Casper Ruud",
+        "Daniil Medvedev",
+        "Alexander Zverev",
+        "Stefanos Tsitsipas",
+        "Novak Djokovic",
+        "Cameron Norrie"
+    ]
 }
 ```
 
 ## main.py
- Currently goes and creates a tournament object for every tournament in this month:
+ Currently goes and creates a tournament object for every tournament in this month (not updated to current release of the object above):
 
 ```python
 {
