@@ -26,6 +26,101 @@
 }
 ```
 
+## match.py
+ Given a tournament gets all the matches for the current day. It distinguishes matches between singles and doubles with the ["type"] attribute.
+
+```json
+{
+    "url": "/en/scores/current/vienna/337/daily-schedule",
+    "matches": [
+        {
+            "round": "QF",
+            "player_one": {
+                "seed": "NS",
+                "name": "Grigor Dimitrov"
+            },
+            "player_two": {
+                "seed": "NS",
+                "name": "Marcos Giron"
+            },
+            "type": "singles"
+        },
+        {
+            "round": "QF",
+            "player_one": {
+                "seed": "1",
+                "name": "Daniil Medvedev"
+            },
+            "player_two": {
+                "seed": "6",
+                "name": "Jannik Sinner"
+            },
+            "type": "singles"
+        },
+        {
+            "round": "QF",
+            "player_one": {
+                "seed": "5",
+                "name": "Hubert Hurkacz"
+            },
+            "player_two": {
+                "seed": "NS",
+                "name": "Borna Coric"
+            },
+            "type": "singles"
+        },
+        {
+            "round": "QF",
+            "player_one": {
+                "seed": "NS",
+                "name": "Daniel Evans"
+            },
+            "player_two": {
+                "seed": "NS",
+                "name": "Denis Shapovalov"
+            },
+            "type": "singles"
+        },
+        {
+            "round": "QF",
+            "player_one": {
+                "seed": "NS",
+                "name": [
+                    "Francisco Cerundolo",
+                    "Maximo Gonzalez"
+                ]
+            },
+            "player_two": {
+                "seed": "WC",
+                "name": [
+                    "Robin Haase",
+                    "Philipp Oswald"
+                ]
+            },
+            "type": "doubles"
+        },
+        {
+            "round": "SF",
+            "player_one": {
+                "seed": "Q",
+                "name": [
+                    "Sander Gille",
+                    "Joran Vliegen"
+                ]
+            },
+            "player_two": {
+                "seed": "WC",
+                "name": [
+                    "Alexander Erler",
+                    "Lucas Miedler"
+                ]
+            },
+            "type": "doubles"
+        }
+    ]
+}
+```
+
 ## main.py
  Currently goes and creates a tournament object for every tournament in this month (not updated to current release of the object above):
 
