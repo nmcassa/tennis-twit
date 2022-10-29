@@ -1,6 +1,12 @@
 # tennis-twit
  Tennis Twitter Bot
 
+## requirements
+
+```
+pip install -r requirements.txt
+```
+
 ## tourn.py
  Given the url of a tournament page from atpworldtour.com will create this object:
 

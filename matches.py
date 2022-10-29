@@ -2,20 +2,22 @@ from tourn import *
 
 class Matches:
 	def __init__(self, tourn: Tournament):
-		self.build(tourn)
+		page = self.build_page(tourn)
+		self.build(page)
 
 	def __str__(self):
 		return jsonify(self)
 
-	def build(self, tourn: Tournament):
-		#get the daily schedule page
+	def build_page(self, tourn: Tournament) -> BeautifulSoup:
 		page = get_parsed_page(tourn.url)
 		page = page.find("li", {"data-title": "Daily Schedule"}).find("a")
 
 		#add attribute to dict and get page
 		self.url = page['href']
-		page = get_parsed_page("https://www.atptour.com" + self.url)
 
+		return get_parsed_page("https://www.atptour.com" + self.url)
+
+	def build(self, page: BeautifulSoup):
 		#get rows in page
 		matches = page.find("div", {"id": "scoresDailyScheduleContent"})
 		matches = matches.findAll("tr")
@@ -44,12 +46,12 @@ class Matches:
 				single["player_one"]["seed"] = seeds[0].find("span").text.replace("\r\n", "")[21:]
 				single["player_one"]["seed"] = single["player_one"]["seed"][:len(single["player_one"]["seed"])-17]
 			except:
-				single["player_one"]["seed"] = "NS"
+				pass
 			try:
 				single["player_two"]["seed"] = seeds[1].find("span").text.replace("\r\n", "")[21:]
 				single["player_two"]["seed"] = single["player_two"]["seed"][:len(single["player_two"]["seed"])-17]
 			except:
-				single["player_two"]["seed"] = "NS"
+				pass
 
 			names = match.findAll("td", {"day-table-name"})
 
@@ -71,4 +73,3 @@ if __name__ == "__main__":
 	to = Tournament("/en/tournaments/vienna/337/overview")
 	ma = Matches(to)
 	print(ma)
-
