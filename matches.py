@@ -43,13 +43,13 @@ class Matches:
 			##gets seeds of players and filters out dumb stuff
 			seeds = match.findAll("td", {"day-table-seed"})
 			try:
-				single["player_one"]["seed"] = seeds[0].find("span").text.replace("\r\n", "")[21:]
-				single["player_one"]["seed"] = single["player_one"]["seed"][:len(single["player_one"]["seed"])-17]
+				single["player_one"]["seed"] = seeds[0].find("span").text.replace("\r\n", "").replace(" ", "")
+				single["player_one"]["seed"] = single["player_one"]["seed"].replace(" ", "")
 			except:
 				pass
 			try:
-				single["player_two"]["seed"] = seeds[1].find("span").text.replace("\r\n", "")[21:]
-				single["player_two"]["seed"] = single["player_two"]["seed"][:len(single["player_two"]["seed"])-17]
+				single["player_two"]["seed"] = seeds[1].find("span").text.replace("\r\n", "").replace(" ", "")
+				single["player_two"]["seed"] = single["player_two"]["seed"].replace(" ", "")
 			except:
 				pass
 

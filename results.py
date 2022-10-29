@@ -8,6 +8,7 @@ class Results:
 		self.results = {}
 
 		for date in self.dates:
+			page = get_parsed_page("https://www.atptour.com" + self.url + "?matchdate=" + date)
 			self.results[date] = self.get_results(page, date)
 
 	def __str__(self):
@@ -33,7 +34,7 @@ class Results:
 		return ret
 
 	def get_results(self, page: BeautifulSoup, date: str):
-		matches = page.find("div", {"id": "scoresResultsContent"})
+		matches = page.find("div", {"id": "scoresResultsContent"}).find("tbody")
 		matches = matches.findAll("tr")
 
 		ret = []
@@ -43,8 +44,8 @@ class Results:
 			single = {}
 
 			#creates a dict to hold each player
-			single["player_one"] = {}
-			single["player_two"] = {}
+			single["winner"] = {}
+			single["loser"] = {}
 
 			##if it finds none it's a header row
 			seeds = match.findAll("td", {"day-table-seed"})
@@ -52,30 +53,47 @@ class Results:
 				continue
 			else:
 				try:
-					single["player_one"]["seed"] = seeds[0].find("span").text.replace("\r\n", "")[21:]
-					single["player_one"]["seed"] = single["player_one"]["seed"][:len(single["player_one"]["seed"])-17]
+					single["winner"]["seed"] = seeds[0].find("span").text.replace("\r\n", "").replace(" ", "")
+					single["winner"]["seed"] = single["winner"]["seed"].replace(" ", "")
 				except:
 					pass
 				try:
-					single["player_two"]["seed"] = seeds[1].find("span").text.replace("\r\n", "")[21:]
-					single["player_two"]["seed"] = single["player_two"]["seed"][:len(single["player_two"]["seed"])-17]
+					single["loser"]["seed"] = seeds[1].find("span").text.replace("\r\n", "").replace(" ", "")
+					single["loser"]["seed"] = single["loser"]["seed"].replace(" ", "")
 				except:
 					pass
 
 			names = match.findAll("td", {"day-table-name"})
-			print(names)
 
-			#player_one
+			#winner
 			name_one = names[0].findAll("a")
-			name_two = names[1].findAll("a") #player_two
+			name_two = names[1].findAll("a") #loser
 			if len(name_one) == 1:
 				single["type"] = "singles"
-				single["player_one"]["name"] = name_one[0].text
-				single["player_two"]["name"] = name_two[0].text
+				single["winner"]["name"] = name_one[0].text
+				single["loser"]["name"] = name_two[0].text
 			else:
 				single["type"] = "doubles"
-				single["player_one"]["name"] = [name_one[0].text, name_one[1].text]
-				single["player_two"]["name"] = [name_two[0].text, name_two[1].text]
+				single["winner"]["name"] = [name_one[0].text, name_one[1].text]
+				single["loser"]["name"] = [name_two[0].text, name_two[1].text]
+
+			score = match.find("td", {"day-table-score"}).find("a").text.replace("\r\n", "").replace("\n", "").split(" ")
+			score = [i for i in score if i != '']
+
+			n_score = []
+
+			for item in score:
+				if len(item) == 2 or len(item) == 3:
+					n_score.append(item)
+				elif len(item) == 5 or len(item) == 6:
+					n_score.append(item[:3])
+					n_score.append(item[3:])
+				elif len(item) == 8:
+					n_score.append(item[:3])
+					n_score.append(item[3:6])
+					n_score.append(item[6:])
+
+			single["score"] = n_score
 			
 			ret.append(single)
 

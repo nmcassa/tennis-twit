@@ -127,6 +127,117 @@ pip install -r requirements.txt
 }
 ```
 
+## results.py
+ Absolute wall of text, gives scores and matches for each day
+
+```python
+{
+    "url": "/en/scores/current/vienna/337/results",
+    "dates": [
+        "10/29/2022",
+        "10/28/2022",
+        "10/27/2022",
+        "10/26/2022",
+        "10/25/2022",
+        "10/24/2022",
+        "10/23/2022",
+        "10/22/2022"
+    ],
+    "results": {
+        "10/29/2022": [
+            {
+                "winner": {
+                    "seed": "(1)",
+                    "name": "Daniil Medvedev"
+                },
+                "loser": {
+                    "name": "Grigor Dimitrov"
+                },
+                "type": "singles",
+                "score": [
+                    "64",
+                    "62"
+                ]
+            },
+            {
+                "winner": {
+                    "name": "Denis Shapovalov"
+                },
+                "loser": {
+                    "name": "Borna Coric"
+                },
+                "type": "singles",
+                "score": [
+                    "764",
+                    "60"
+                ]
+            }
+        ],
+        "10/28/2022": [
+            {
+                "winner": {
+                    "seed": "(1)",
+                    "name": "Daniil Medvedev"
+                },
+                "loser": {
+                    "seed": "(6)",
+                    "name": "Jannik Sinner"
+                },
+                "type": "singles",
+                "score": [
+                    "64",
+                    "62"
+                ]
+            },
+            {
+                "winner": {
+                    "name": "Borna Coric"
+                },
+                "loser": {
+                    "seed": "(5)",
+                    "name": "Hubert Hurkacz"
+                },
+                "type": "singles",
+                "score": [
+                    "64",
+                    "672",
+                    "765"
+                ]
+            },
+            {
+                "winner": {
+                    "name": "Grigor Dimitrov"
+                },
+                "loser": {
+                    "name": "Marcos Giron"
+                },
+                "type": "singles",
+                "score": [
+                    "63",
+                    "46",
+                    "64"
+                ]
+            },
+            {
+                "winner": {
+                    "name": "Denis Shapovalov"
+                },
+                "loser": {
+                    "name": "Daniel Evans"
+                },
+                "type": "singles",
+                "score": [
+                    "63",
+                    "63"
+                ]
+            }
+        ],
+         "you get the point it goes on for all days..."
+        ]
+    }
+}
+```
+
 ## main.py
  Currently goes and creates a tournament object for every tournament in this month (not updated to current release of the object above):
 
